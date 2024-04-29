@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.GetIP = exports.findFreePort = void 0;
 const net_1 = require("net");
 const os_1 = require("os");
 function findFreePort(callback) {
@@ -23,6 +24,7 @@ function findFreePort(callback) {
     }
     checkNextPort();
 }
+exports.findFreePort = findFreePort;
 function GetIP() {
     var _a;
     const Interfaces = (0, os_1.networkInterfaces)();
@@ -38,3 +40,4 @@ function GetIP() {
         }
     }
 }
+exports.GetIP = GetIP;

@@ -3,13 +3,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Server = void 0;
-const fs_1 = __importDefault(require("fs"));
+exports.SocketServer = exports.Server = void 0;
 const path_1 = __importDefault(require("path"));
+const fs_1 = __importDefault(require("fs"));
 class Server {
-    constructor(app, io) {
+    constructor(app) {
         this.app = app;
-        this.io = io;
         this.Routes = Array();
     }
     MakeRoutes() {
@@ -18,11 +17,16 @@ class Server {
             .map(entry => entry.name);
         files.forEach(file => {
             var name = `/${path_1.default.basename(file)}`;
-            if (!this.Routes.includes(name)) {
-                this.Routes.push(name);
+            if (!this.Routes.includes(name) && file.endsWith(".ejs")) {
+                this.Routes.push(name.replace(".ejs", ""));
             }
         });
-        this.Routes.forEach(route => fs_1.default.writeFileSync("Routes.txt", route));
     }
 }
 exports.Server = Server;
+class SocketServer {
+    constructor(io) {
+        this.io = io;
+    }
+}
+exports.SocketServer = SocketServer;

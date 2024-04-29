@@ -4,7 +4,7 @@
   "description": "Server Code",
   "main": "Main.js",
   "scripts": {
-    "build": "tsc --pretty;npm start",
+    "build": "tsc --pretty",
     "start": "nodemon dist/Main.js"
   },
   "repository": {
