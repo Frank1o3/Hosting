@@ -6,7 +6,7 @@
   "type": "commonjs",
   "scripts": {
     "build": "tsc --pretty -w",
-    "start": "nodemon dist/Main.js"
+    "start": "./update.sh; nodemon dist/Main.js"
   },
   "repository": {
     "type": "git",
