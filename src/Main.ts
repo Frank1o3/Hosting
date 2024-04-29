@@ -1,5 +1,5 @@
 // Import's
-import { Server, SocketServer } from "./Server.ts";
+import { Server, SocketServer } from "./Server.js";
 import socket from "socket.io";
 import express from 'express';
 import cluster from 'cluster';
