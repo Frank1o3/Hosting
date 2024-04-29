@@ -18,7 +18,10 @@ class Server {
         files.forEach(file => {
             var name = `/${path_1.default.basename(file)}`;
             if (!this.Routes.includes(name) && file.endsWith(".ejs")) {
-                this.Routes.push(name.replace(".ejs", ""));
+                let route = name.replace(".ejs", "");
+                this.app.get(route, (req, res) => {
+                    res.status(200).render(file);
+                });
             }
         });
     }
@@ -27,6 +30,9 @@ exports.Server = Server;
 class SocketServer {
     constructor(io) {
         this.io = io;
+    }
+    log() {
+        console.log("HH");
     }
 }
 exports.SocketServer = SocketServer;

@@ -1,22 +1,22 @@
 // Import's
-import http from "http";
 import { Server, SocketServer } from "./Server"
-import express from 'express';
 import socket from "socket.io";
+import express from 'express';
+import cluster from 'cluster';
+import http from "http";
 import path from 'path';
+import os from 'os';
 
-// Setup http server & express app
-const app = express();
-const TCPServer = http.createServer(app);
+const App = express();
+const TCPServer = http.createServer(App);
+const IO = new socket.Server(TCPServer);
 
-app.set('view engine', 'ejs');
-app.use(express.static(path.join(__dirname, "views")));
+const e = new Server(App);
 
-// Setup socket.io
-const io = new socket.Server(TCPServer);
+e.MakeRoutes();
 
-// Setup Server
-const server = new Server(app)
+const d = new SocketServer(IO);
+d.log();
 
-// Setup Comunication Server
-const socketserver = new SocketServer(io);
+
+TCPServer.listen(3000,"10.0.0.31");
