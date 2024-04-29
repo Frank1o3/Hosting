@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"typescript.check.npmIsInstalled": true,
+		"typescript.suggest.autoImports": true
+	}
+}
